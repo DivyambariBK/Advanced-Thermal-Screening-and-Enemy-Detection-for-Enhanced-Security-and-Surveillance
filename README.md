@@ -91,3 +91,64 @@ To overcome the low resolution of the thermal sensor, **bilinear interpolation**
 ### Data Format (CSV)
 ```text
 CSV:<64 thermal values>;DIST:<distance>;L:<left PIR>;R:<right PIR>
+```
+
+### Why CSV?
+
+- **Human-readable for debugging**  
+  The data stream can be easily viewed and verified using a serial monitor during development and testing.
+
+- **Robust against partial data corruption**  
+  If a single frame is corrupted, it can be discarded without affecting subsequent frames.
+
+- **Easy parsing on low-memory microcontrollers**  
+  CSV strings can be parsed using simple string operations without complex buffer handling.
+
+- **No endianness or binary alignment issues**  
+  Avoids common problems associated with binary packet decoding across different architectures.
+
+---
+
+## 🎨 Thermal Color Mapping Logic
+
+The system uses adaptive color mapping to clearly distinguish ambient temperature from human heat signatures:
+
+- **Ambient heat** → Blue shades  
+- **Moderate temperature delta (~1–2 °C)** → Green to yellow transition  
+- **Human detection (>2 °C delta)** → Red shades  
+- **Higher deltas** → Darker red (stronger and closer heat source)
+
+This approach ensures **immediate visual recognition of human presence**, even at longer distances.
+
+---
+
+## 🧪 Applications
+
+- Night patrol and perimeter security  
+- Border surveillance and monitoring  
+- Search and rescue operations  
+- Firefighter visibility in smoke-filled environments  
+- Industrial safety monitoring  
+- Disaster response and victim detection  
+
+> ⚠️ **Note:** The system is designed for *patrolling, surveillance, and detection* rather than active combat engagement.
+
+---
+
+## 🚀 Future Enhancements
+
+- Higher-resolution thermal sensors (32×24 or higher)  
+- Improved silhouette and contour extraction algorithms  
+- Wireless data transmission to control rooms or command centers  
+- Custom PCB design for reduced size and weight  
+- AI-based human classification and tracking  
+- Extended battery life and ruggedized enclosure  
+
+---
+
+## 📸 Project Demonstration
+
+![WhatsApp Image 2025-12-08 at 10 17 35](https://github.com/user-attachments/assets/eb02f416-f0e6-47ab-b6a4-594ecf1f7d30)
+
+![WhatsApp Image 2025-12-08 at 10 18 42](https://github.com/user-attachments/assets/7b042997-3ec1-4138-8acb-a89c1138bdaf)
+
